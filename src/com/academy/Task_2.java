@@ -9,7 +9,6 @@ public class Task_2 {
         String usualString = "";
         StringBuilder builderString = new StringBuilder();
         Integer temp;
-        Pattern pattern = Pattern.compile("\\s+\\d{2}\\s+");
 
 
         for (int i = 0; i < 100; i++) {
@@ -18,9 +17,7 @@ public class Task_2 {
         }
         System.out.println("String line: ");
         System.out.println(usualString);
-        Matcher matcher = pattern.matcher(usualString);
-        System.out.println("Modified String line: ");
-        System.out.println(matcher.replaceAll(" -1 "));
+        changeTwoDigitNumber(usualString);
 
         for (int i = 0; i < 100; i++) {
             temp = (int) (Math.random() * 1001);
@@ -28,8 +25,14 @@ public class Task_2 {
         }
         System.out.println("StringBuilder line: ");
         System.out.println(builderString);
-        matcher = pattern.matcher(builderString);
-        System.out.println("Modified StringBuilder line: ");
+        changeTwoDigitNumber(builderString.toString());
+
+    }
+
+    private static void changeTwoDigitNumber(String incomingString) {
+        Pattern pattern = Pattern.compile("\\s+\\d{2}\\s+");
+        Matcher matcher = pattern.matcher(incomingString);
+        System.out.println("Modified line: ");
         System.out.println(matcher.replaceAll(" -1 "));
     }
 }
